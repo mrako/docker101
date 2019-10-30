@@ -1,80 +1,27 @@
 # Docker 101
 
-This branch includes the answers for the Docker 101 assignments.
+This is the repository for simple Docker exercises. You can find the answers under branch **answers**.
 
 
-## Cmd
+## Exercise 1
 
-```
-docker build -t cmd .
-docker run -i cmd example
-```
-
-## Server
-
-```
-docker build -t server .
-```
-
-### Running
-
-```
-docker run -i -p 3000:3000 server
-```
-
-### Testing
-
-```
-docker run server npm test
-```
-
-## Backend
+1. Add two files into folder **cmd**: **Dockerfile** and **index.js**.
+2. To **index.js**, add printing the first command-line parameter in format "Hello ${param}!".
+3. Write a Dockerfile that runs that file (as an entrypoint).
+4. Add a command-line parameter to the **Docker** command execution and make sure it prints "Hello ${param}!", e.g. "Hello world!".
 
 
-### Queries in Curl
+## Exercise 2
 
-```
-curl -X POST -H "Content-Type: application/json" --data '{"message":"testing"}' http://localhost:4000/api/messages
+1. Add three files into folder **server**: **Dockerfile**, **package.json** and **app.js**.
+2. Add [koa](http://koajs.com/) to **package.json**.
+3. Install [npm](https://www.npmjs.com/) dependencies.
+4. Make **server.js** answer to endpoint **/** and return "Hello world".
+5. Add [node](https://nodejs.org/), **package.json** and **app.js** to **Dockerfile**.
+6. Run server using **Docker**.
 
-curl http://localhost:4000/api/messages
-```
 
-### Local
+## Exercise 3
 
-#### Create database
-
-```
-psql -c "CREATE ROLE example WITH CREATEDB LOGIN PASSWORD 'example'"
-psql -c "CREATE DATABASE example WITH OWNER example"
-psql -c "DROP DATABASE example"
-```
-
-#### Run
-
-```
-npm start
-```
-
-#### Test
-
-```
-npm test
-```
-
-### Docker Compose
-
-```
-docker-compose build
-```
-
-#### Run
-
-```
-docker-compose up
-```
-
-#### Test
-
-```
-docker-compose run backend npm test
-```
+1. Create **docker-compose.yml** that includes postgres database.
+2. Run backend using **Docker Compose**.
